@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hazard 7007 — пульт</title>
+<style>
+:root{--W:min(100vw - 24px,640px);--g:#d9b94e;--gd:#7d682f;--bg:#0a0a0c;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;padding:12px 0 28px;background:var(--bg);color:#eee;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100svh;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+main{width:var(--W)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+.pn{position:relative;width:var(--W);aspect-ratio:1083/705;margin-top:calc(var(--W)*.035);border-radius:calc(var(--W)*.035);background:linear-gradient(#27252c,#1a191e);box-shadow:0 0 0 1px #000,inset 0 1px 0 #ffffff14,inset 0 -2px 6px #0008,0 14px 34px #000c}
+.pn>*{position:absolute}
+.in,.jk,.bd,.bx{border:max(1.5px,calc(var(--W)*.0024)) solid var(--g);border-radius:calc(var(--W)*.011)}
+.in{left:3.1%;top:4.7%;width:93.8%;height:91.4%;pointer-events:none}
+.k{transform:translate(-50%,-50%);aspect-ratio:1;border-radius:50%;touch-action:none;cursor:grab;background:repeating-conic-gradient(#08080a 0 2.4deg,#2c2b32 2.4deg 6deg);box-shadow:0 6px 14px #000c,inset 0 0 0 1.5px #000}
+.k i{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(circle at 40% 30%,#2a292f,#0c0c0e 70%);box-shadow:inset 0 0 0 2px #050506,inset 0 3px 8px #ffffff1a;transform:rotate(var(--a,0deg));transition:transform .1s ease-out}
+.k i::before{content:"";position:absolute;left:50%;top:14%;width:15%;height:80%;transform:translateX(-50%);border-radius:99px;background:linear-gradient(90deg,#15141a,#3a3941 45%,#0b0b0e);box-shadow:0 2px 4px #000a,inset 0 1px 0 #ffffff26}
+.k i::after{content:"";position:absolute;left:50%;top:16%;width:11%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:#fff;box-shadow:0 0 5px #fff8}
+.pos{display:flex;align-items:center;gap:calc(var(--W)*.013);transform:translate(calc(-100% + var(--W)*.008),-50%);cursor:pointer;white-space:nowrap;font:800 calc(var(--W)*.036)/1 "Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;color:var(--g)}
+.pos.v{flex-direction:column;gap:calc(var(--W)*.009);transform:translate(-50%,calc(var(--W)*-.008))}
+.pos::after{content:"";position:absolute;inset:-40% -12%}
+.pos u{display:block;width:calc(var(--W)*.016);aspect-ratio:1;border-radius:50%;background:var(--gd);transition:background .1s}
+.pos.on u{background:#ffd75a;box-shadow:0 0 10px 2px #ffc83aaa}
+.pos.on b{color:#ffe38a}
+.jk{left:6.7%;top:68.1%;width:21.7%;height:23%;display:grid;place-items:center;cursor:pointer;touch-action:none}
+.jk i{position:relative;width:59.6%;height:68%;background:#060607;border-radius:5%;box-shadow:inset 0 0 0 2px #17171b,0 1px 0 #ffffff14}
+.jk i::before{content:"";position:absolute;left:28%;right:30%;top:22%;height:16%;background:repeating-linear-gradient(90deg,#9a9aa0 0 2px,transparent 2px 9px)}
+.jk.dn{background:#ffd75a1c;box-shadow:0 0 14px #ffd75a77}
+.bd{left:35.3%;top:68.2%;width:22.5%;height:12.5%;display:grid;place-items:center;text-align:center;color:var(--g);font:800 calc(var(--W)*.028)/1.15 "Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif}
+.md{left:35.3%;top:84.6%;width:22.5%;text-align:center;color:var(--g);font:800 calc(var(--W)*.045)/1 "Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif}
+.bx{top:63.7%;width:13.9%;height:27.4%;cursor:pointer;touch-action:none}
+.bx b{position:absolute;left:0;right:0;top:16.6%;transform:translateY(-50%);text-align:center;font:800 calc(var(--W)*.031)/1 "Arial Narrow","Roboto Condensed","Helvetica Neue",Arial,sans-serif;color:var(--g)}
+.cap{position:absolute;left:16%;width:68.7%;top:39.4%;height:47.7%;border-radius:calc(var(--W)*.011);background:linear-gradient(#fcf8ea,#e9e2cb);box-shadow:0 calc(var(--W)*.011) 0 #a59e88,0 calc(var(--W)*.016) calc(var(--W)*.012) #000a;transition:transform .04s,box-shadow .04s}
+.bx.dn .cap{transform:translateY(calc(var(--W)*.008));box-shadow:0 calc(var(--W)*.003) 0 #a59e88,0 calc(var(--W)*.006) calc(var(--W)*.006) #000a}
+.nt{margin:14px 4px 0;font-size:calc(var(--W)*.032);line-height:1.45;color:#77767d;text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body><main>
+<section class="pn">
+ <div class="in"></div>
+ <div class="k" id="kv" style="left:22.9%;top:30.5%;width:18%" tabindex="0" role="slider" aria-label="OFF/VOL" aria-valuemin="0" aria-valuemax="100"><i></i></div>
+ <div class="pos v" id="ov" style="left:22.9%;top:51.5%"><u></u><b>OFF/VOL</b></div>
+ <div class="k" id="km" style="left:78.3%;top:30.1%;width:22.5%" tabindex="0" role="slider" aria-label="Режим"><i></i></div>
+ <div class="jk" id="jk" aria-label="Микрофон, PTT"><i></i></div>
+ <div class="bd">PREMIER<br>HAZARD</div><div class="md">7007</div>
+ <div class="bx" id="bm" style="left:64%" aria-label="MAN"><b>MAN</b><div class="cap"></div></div>
+ <div class="bx" id="bh" style="left:79.1%" aria-label="HORN"><b>HORN</b><div class="cap"></div></div>
+</section>
+<p class="nt">Звуки — синтезированная имитация: тон, темп и тембр взяты из вашего видео. Клавиши: M — MAN, H — HORN, пробел — PTT (режим PA).</p>
+</main>
+<script>
+const $=s=>document.querySelector(s),pn=$('.pn'),clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const M=[{n:'HILO',a:-41.6,x:67.9,y:12.2,s:'сирена — два тона'},{n:'YELP',a:-68.4,x:63.8,y:21.3,s:'сирена — частый вой'},{n:'WAIL',a:-94.7,x:62.7,y:32.1,s:'сирена — медленный вой'},{n:'STANDBY',a:-121,x:64.8,y:42.6,s:'готовность — MAN: ручная сирена'},{n:'PA',a:-152.7,x:71,y:51.8,v:1,s:'громкая связь — PTT'},{n:'RADIO',a:-208.2,x:85.9,y:51.8,v:1,s:'радио через громкоговоритель'}];
+let vol=80,lastV=80,mi=3,muted=false,man=false,horn=false,ptt=false,t0=0,mf=300,base=$('.nt').textContent,sayT=0;
+let ctx,out,comp,ui,modeG,manG,hornG,nb,sir,mnv,hov,an,paIn,paG,rad,mic,ms,mb,radT,pt=0,sc=300;
+const E={sub:$('.nt')};
+const mode=()=>M[mi].n,on=()=>vol>2&&!muted;
+/* ---------- аудио ---------- */
+const gain=(v,to)=>{const g=ctx.createGain();g.gain.value=v;if(to)g.connect(to);return g};
+const biq=(t,f,q,gn)=>{const b=ctx.createBiquadFilter();b.type=t;b.frequency.value=f;b.Q.value=q;if(gn)b.gain.value=gn;return b};
+const nz=to=>{const s=ctx.createBufferSource();s.buffer=nb;s.loop=true;s.connect(to);s.start(0,Math.random()*1.5);return s};
+function burst(to,t,k,f,d){const s=ctx.createBufferSource(),b=biq('bandpass',f,.5),g=gain(0,to);s.buffer=nb;s.connect(b);b.connect(g);g.gain.setValueAtTime(k,t);g.gain.exponentialRampToValueAtTime(.001,t+d);s.start(t,Math.random()*1.5,d+.03)}
+function voice(to,lf){const g=gain(0,to),o=ctx.createOscillator();
+ o.setPeriodicWave(ctx.createPeriodicWave(new Float32Array(8),new Float32Array([0,1,.015,.03,.01,.01,.004,.004])));o.frequency.value=800;o.connect(g);o.start();
+ if(lf){const l=ctx.createOscillator(),lg=gain(600);l.type='triangle';l.frequency.value=lf;l.connect(lg);lg.connect(o.frequency);l.start()}
+ return{g,f:(hz,t)=>o.frequency.setTargetAtTime(hz,t,.012)}}
+function build(){
+ comp=ctx.createDynamicsCompressor();comp.threshold.value=-8;comp.knee.value=10;comp.ratio.value=8;comp.attack.value=.003;comp.release.value=.15;
+ an=ctx.createAnalyser();an.fftSize=512;comp.connect(an);comp.connect(ctx.destination);
+ out=gain(0,comp);ui=gain(.8,comp);modeG=gain(1,out);manG=gain(1,out);hornG=gain(1,out);
+ const L=ctx.sampleRate*2;nb=ctx.createBuffer(1,L,ctx.sampleRate);const d=nb.getChannelData(0);for(let i=0;i<L;i++)d[i]=Math.random()*2-1;
+ sir=voice(modeG);mnv=voice(manG);hov=voice(hornG,18.2);hov.f(1200,ctx.currentTime);
+ const rb=biq('bandpass',1500,.6),rh=biq('highpass',350,.7),rl=biq('lowpass',3200,.7),rg=gain(0);
+ nz(rb);rb.connect(rh);rh.connect(rl);rl.connect(rg);rg.connect(gain(3.2,modeG));rad={bp:rb,rg};
+ paIn=biq('highpass',280,.7);const pk=biq('peaking',2600,1,4),pl=biq('lowpass',3800,.7),pc=ctx.createDynamicsCompressor();paG=gain(0,modeG);
+ paIn.connect(pk);pk.connect(pl);pl.connect(pc);pc.connect(paG);
+ pt=performance.now();setInterval(tick,16)}
+function A(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return;try{navigator.audioSession.type='playback'}catch(e){}ctx=new C();build()}
+ if(ctx.state!=='running'){const p=ctx.resume();if(p&&p.catch)p.catch(()=>{})}return ctx}
+['pointerup','touchend','click','keydown'].forEach(e=>addEventListener(e,()=>{if(ctx&&ctx.state!=='running')A()},{capture:true,passive:true}));
+function tickSnd(i,k=1){if(!ctx||muted)return;const t=ctx.currentTime;burst(ui,t,k*2.4,1500+i*280,.035);
+ const o=ctx.createOscillator(),g=gain(0,ui);o.frequency.setValueAtTime(130+i*28,t);o.frequency.exponentialRampToValueAtTime(60,t+.05);g.gain.setValueAtTime(.45*k,t);g.gain.exponentialRampToValueAtTime(.001,t+.06);o.connect(g);o.start(t);o.stop(t+.07)}
+/* по замеру видео: WAIL и YELP — линейный «треугольник» 600–1800 Гц (период 5,7 с и 0,33 с); HILO 1120/680 Гц; HORN — быстрый «треугольник» ~18 раз в секунду */
+const tri=(p,a,b)=>{p%=1;return a+(b-a)*(p<.5?p*2:2-p*2)};
+const sf=(m,t)=>m==='WAIL'?tri(t/5.714,600,1800):m==='YELP'?tri(t/.33,600,1800):(t%1<.5?1120:680);
+function radLoop(){clearTimeout(radT);if(!ctx||!on()||mode()!=='RADIO')return;
+ const t=ctx.currentTime+.02,len=1.4+Math.random()*2.2,{bp,rg}=rad;burst(modeG,t,3,2600,.08);
+ for(let s=.1;s<len;s+=.07+Math.random()*.11){rg.gain.setTargetAtTime(Math.random()<.16?.04:.3+Math.random()*.6,t+s,.012);bp.frequency.setTargetAtTime(450+Math.random()*1800,t+s,.02)}
+ rg.gain.setTargetAtTime(0,t+len,.01);burst(modeG,t+len,2.2,2200,.1);radT=setTimeout(radLoop,(len+1.3+Math.random()*2.6)*1000)}
+async function micOn(){if(mic||mb)return;mb=1;try{mic=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});ms=ctx.createMediaStreamSource(mic);ms.connect(paIn);if(mode()!=='PA'||!on())micOff()}catch(e){mic=null;say('микрофон недоступен — разрешите доступ в браузере')}mb=0}
+function micOff(){if(mic){mic.getTracks().forEach(x=>x.stop());try{ms.disconnect()}catch(e){}mic=null}}
+function refresh(){if(!ctx)return;const m=mode(),t=ctx.currentTime;
+ t0=m==='WAIL'?t-1.31:t;rad.rg.gain.cancelScheduledValues(0);rad.rg.gain.setValueAtTime(0,t);clearTimeout(radT);if(m==='RADIO'&&on())radLoop();
+ if(m!=='PA'||!on())micOff()}
+function tick(){const n=performance.now(),dt=Math.min(.1,(n-pt)/1000);pt=n;
+ const t=ctx.currentTime,m=mode(),p=on(),mn=man&&p,hn=horn&&p,ss=p&&(m==='WAIL'||m==='YELP'||m==='HILO');
+ sc=ss?sf(m,t-t0):Math.max(300,sc-800*dt);
+ mf=mn?Math.min(1800,mf+2500*dt):Math.max(300,mf-800*dt);
+ const lv=f=>clamp((f-320)/110,0,1)*.8;
+ out.gain.setTargetAtTime(p?Math.pow(vol/100,1.7):0,t,.03);
+ sir.g.gain.setTargetAtTime(p?lv(sc):0,t,.02);sir.f(sc,t);
+ mnv.g.gain.setTargetAtTime(p?lv(mf):0,t,.02);mnv.f(mf,t);
+ hov.g.gain.setTargetAtTime(hn?.8:0,t,.01);
+ modeG.gain.setTargetAtTime(hn||mn||mf>400?0:1,t,.02);
+ paG.gain.setTargetAtTime(m==='PA'&&p&&ptt&&mic?.6:0,t,.02)}
+/* ---------- интерфейс ---------- */
+const items=M.map((m,i)=>{const d=document.createElement('div');d.className='pos'+(m.v?' v':'');d.style.left=m.x+'%';d.style.top=m.y+'%';
+ d.innerHTML=m.v?`<u></u><b>${m.n}</b>`:`<b>${m.n}</b><u></u>`;d.onpointerdown=e=>{e.preventDefault();A();setMode(i)};pn.append(d);return d});
+function sub(t){base=t;if(!sayT)E.sub.textContent=t}
+function say(t){E.sub.textContent=t;clearTimeout(sayT);sayT=setTimeout(()=>{sayT=0;E.sub.textContent=base},2400)}
+function draw(){
+ $('#km').style.setProperty('--a',M[mi].a+'deg');$('#kv').style.setProperty('--a',(-135+2.7*vol)+'deg');
+ $('#km').setAttribute('aria-valuetext',mode());$('#kv').setAttribute('aria-valuenow',vol);
+ items.forEach((d,i)=>d.classList.toggle('on',on()&&i===mi));$('#ov').classList.toggle('on',on())}
+function setMode(i){i=clamp(i,0,M.length-1);if(i===mi)return;mi=i;draw();tickSnd(i+1);refresh()}
+function setVol(v,snd){v=Math.round(clamp(v,0,100));const w=on(),o=vol;vol=v;if(v>2)lastV=v;draw();
+ if(w!==on()){if(snd)tickSnd(0,1.6);refresh()}else if(snd&&Math.floor(v/10)!==Math.floor(o/10))tickSnd(Math.floor(v/10)+1,.6)}
+function knob(el,get,set){let la,raw;
+ const ang=e=>{const r=el.getBoundingClientRect();return Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2))*180/Math.PI+90};
+ el.onpointerdown=e=>{e.preventDefault();A();el.setPointerCapture(e.pointerId);la=ang(e);raw=get()};
+ el.onpointermove=e=>{if(!el.hasPointerCapture(e.pointerId))return;const a=ang(e);let d=a-la;d-=360*Math.round(d/360);la=a;raw=set(raw+d)}}
+knob($('#kv'),()=>-135+2.7*vol,a=>{a=clamp(a,-135,135);setVol((a+135)/2.7,1);return a});
+knob($('#km'),()=>M[mi].a,a=>{a=clamp(a,-208.2,-41.6);let b=0;M.forEach((m,i)=>{if(Math.abs(m.a-a)<Math.abs(M[b].a-a))b=i});setMode(b);return a});
+$('#kv').onkeydown=e=>{const d={ArrowUp:5,ArrowRight:5,ArrowDown:-5,ArrowLeft:-5}[e.key];if(d){e.preventDefault();A();setVol(vol+d,1)}};
+$('#km').onkeydown=e=>{const d={ArrowUp:-1,ArrowRight:-1,ArrowDown:1,ArrowLeft:1}[e.key];if(d){e.preventDefault();A();setMode(mi+d)}};
+$('#ov').onpointerdown=e=>{e.preventDefault();A();setVol(vol<3?(lastV>2?lastV:80):0,1)};
+const hd=(el,dn,up)=>{let s=0;const f=v=>{if(s===v)return;s=v;el.classList.toggle('dn',!!v);v?dn():up()};
+ el.onpointerdown=e=>{e.preventDefault();A();try{el.setPointerCapture(e.pointerId)}catch(x){}f(1)};
+ el.onpointerup=el.onpointercancel=el.onlostpointercapture=()=>f(0);return f};
+const off=()=>say('питание выключено — поверните OFF/VOL');
+const fm=hd($('#bm'),()=>{if(!on())return off();man=true;tickSnd(5,.5)},()=>{man=false});
+const fh=hd($('#bh'),()=>{if(!on())return off();horn=true;tickSnd(6,.5)},()=>{horn=false});
+const fp=hd($('#jk'),()=>{if(!on())return off();if(mode()!=='PA')return say('PTT работает в режиме PA');ptt=true;micOn();tickSnd(3,.5)},()=>{if(ptt){ptt=false;tickSnd(2,.4)}});
+addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.metaKey)return;const k=e.key.toLowerCase();
+ if(k==='m'){A();fm(1)}else if(k==='h'){A();fh(1)}else if(k===' '&&!e.target.closest('button,input,[role=slider]')){e.preventDefault();A();fp(1)}});
+addEventListener('keyup',e=>{const k=e.key.toLowerCase();if(k==='m')fm(0);else if(k==='h')fh(0);else if(k===' ')fp(0)});
+addEventListener('contextmenu',e=>e.preventDefault());
+draw();
+</script></body></html>
